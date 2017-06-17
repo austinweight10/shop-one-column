@@ -1,0 +1,10 @@
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/swiper.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/dragscroll.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/home.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/pdp.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/checkout.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/cart.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/prod/js/menu.js"></script>
