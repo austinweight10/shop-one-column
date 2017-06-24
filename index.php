@@ -30,7 +30,9 @@
 				<?php
 					for ($x = 1; $x <= 14; $x++) {
 
-							$product = wc_get_product( 11 ); // get right products
+							// need to change for things like earth fire etc
+
+							$product = wc_get_product(11); // get right products
 							$productURL = get_permalink($x);  // to pull into ajax call
 							$mediaURL = '/Yawp_Build/Yawp_Build/dev/img/png_jpg/';
 
