@@ -2,6 +2,10 @@
 
 	<body>
 
+		<!-- loader -->
+		<div class="loader">
+		</div>
+
 		<!-- product container -->
 		<div class="pdpinfo">
 		</div>
@@ -16,9 +20,7 @@
 				<div id="background-wrap">
 					<?php
 						for ($x = 1; $x <= 5; $x++) {
-								echo '<div class="x';
-								echo $x;
-								echo '"><div class="cloud"></div></div>';
+								echo '<div class="x' . $x . '"><div class="cloud"></div></div>';
 						}
 					?>
 				</div>
@@ -45,7 +47,7 @@
 
 							$product = wc_get_product(11); // get right products
 							$productURL = get_permalink($x);  // to pull into ajax call
-							$mediaURL = '/Yawp_Build/Yawp_Build/dev/img/png_jpg/';
+							$mediaURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 							echo '<div class="product product' . $x . '">';
 								echo '<div class="producthover"></div>';
@@ -65,23 +67,27 @@
 										echo '<span class="outodstock">' . $product->get_stock_quantity() . 'left in stock</span>';
 									echo '</div>';
 								echo '</div>';
-								echo '<img src="' . $mediaURL . $x . '.png">';
+								echo '<img src="' . $mediaURL . 'wp-content/themes/shop-one-column/prod/img/png_jpg/' . $x . '.png">';
 							echo '</div>';
 					}
 
-				?>
+					echo '<img class="site-background" src="'. $mediaURL . 'wp-content/themes/shop-one-column/prod/img/png_jpg/site-bkg.jpg">';
 
-				<img class="site-background" src="/Yawp_Build/Yawp_Build/dev/img/png_jpg/site-bkg.jpg">
+				?>
 			</div>
 		</div>
 
 
 			<!-- cart -->
 			<div class="cart">
-				<?php $cartcount = sprintf ( _n( '%d item', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>
 				<div class="cart-menu-icon">
 				</div>
-				<p class="cart-menu-items"><?php echo $cartcount ?></p>
+				<p class="cart-menu-items">
+					<?php
+						$cartcount = sprintf ( _n( '%d item', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() );
+						echo $cartcount;
+					?>
+				</p>
 			</div>
 
 			<nav class="cart-menu col-xs-9 col-md-4" role="navigation">
