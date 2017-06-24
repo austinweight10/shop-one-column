@@ -11,15 +11,17 @@
 		</div>
 
 		<!-- clouds -->
-		<div class="home-page__clouds">
-			<div id="background-wrap">
-				<?php
-					for ($x = 1; $x <= 5; $x++) {
-							echo '<div class="x';
-							echo $x;
-							echo '"><div class="cloud"></div></div>';
-					}
-				?>
+		<div class="home--clouds">
+			<div class="home-page__clouds">
+				<div id="background-wrap">
+					<?php
+						for ($x = 1; $x <= 5; $x++) {
+								echo '<div class="x';
+								echo $x;
+								echo '"><div class="cloud"></div></div>';
+						}
+					?>
+				</div>
 			</div>
 		</div>
 
@@ -28,44 +30,45 @@
 			<div class="home-page-inner dragscroll">
 
 				<?php
+
 					for ($x = 1; $x <= 14; $x++) {
 
-							// need to change for things like earth fire etc
+							if ($x === 2 || $x === 5 || $x === 8 || $x === 10) {
+								$naturalElement = 'overlayearth';
+							} else if ($x === 3 || $x === 6 || $x === 9 || $x === 11 || $x === 14) {
+								$naturalElement = 'overlaywater';
+							} else if ($x === 4 || $x === 7) {
+								$naturalElement = 'overlaywind';
+							} else if ($x === 1 || $x === 12 || $x === 13) {
+								$naturalElement = 'overlayfire';
+							};
 
 							$product = wc_get_product(11); // get right products
 							$productURL = get_permalink($x);  // to pull into ajax call
 							$mediaURL = '/Yawp_Build/Yawp_Build/dev/img/png_jpg/';
 
-							echo '<div class="product product';
-							echo $x;
-							echo '">';
-							echo '<div class="producthover"></div>';
-							echo '<div class="productcontainer">';
-							echo '<div class="productinfo overlayfire">';
-							echo '<span class="price">£';
-							echo $product->get_regular_price();
-							echo '</span>';
-							if ($product->get_sale_price()) {
-								echo '<span class="saleprice">£';
-								echo $product->get_sale_price();
-								echo '</span>';
-							};
-							echo '<div class="productbuttons">';
-							echo '<a href="';
-							echo $productURL;
-							echo '" class="moreinfo">more info</a>';
-							echo '</div>';
-							echo '<span class="outodstock">';
-							echo $product->get_stock_quantity();
-							echo 'left in stock</span>';
-							echo '</div>';
-							echo '</div>';
-							echo '<img src="';
-							echo $mediaURL;
-							echo $x;
-							echo '.png">';
+							echo '<div class="product product' . $x . '">';
+								echo '<div class="producthover"></div>';
+								echo '<div class="productcontainer">';
+									echo '<div class="productinfo ' . $naturalElement . '">';
+										echo '<span class="price">£' . $product->get_regular_price() . '</span>';
+
+										if ($product->get_sale_price()) {
+											echo '<span class="saleprice">£';
+											echo $product->get_sale_price();
+											echo '</span>';
+										};
+
+										echo '<div class="productbuttons">';
+											echo '<a href="' . $productURL . '" class="moreinfo">more info</a>';
+										echo '</div>';
+										echo '<span class="outodstock">' . $product->get_stock_quantity() . 'left in stock</span>';
+									echo '</div>';
+								echo '</div>';
+								echo '<img src="' . $mediaURL . $x . '.png">';
 							echo '</div>';
 					}
+
 				?>
 
 				<img class="site-background" src="/Yawp_Build/Yawp_Build/dev/img/png_jpg/site-bkg.jpg">
@@ -85,24 +88,6 @@
 				<div class="menu-content-cart">
 					<h1 class="menu-menu-cart">CART</h1><span class="menu-closing menu-menu-close-cart">close</span>
 
-					<!-- need to run a call for this at removeing on relaod wc()->cart->remove_cart_item($item) -->
-					<script type="text/javascript">
-					//     $(document).ready(function(){
-					//         $("button").click(function(){
-					//
-					//             $.ajax({
-					//                 type: 'POST',
-					//                 url: 'script.php',
-					//                 success: function(data) {
-					//                     alert(data);
-					//                     $("p").text(data);
-					//
-					//                 }
-					//             });
-					//    });
-					// });
-					</script>
-
 					<?php
 
 				    global $woocommerce;
@@ -113,11 +98,12 @@
 	            $_product = $values['data']->post;
 							$price = get_post_meta($values['product_id'] , '_price', true);
 
-	            echo '<div class="menu-elements-cart" id="accordion"><h2 class="menu-accordian-line-cart">'.$_product->post_title.'</h2><div class="menu-content-cart collapsible"><p>  <br>Price:'.$price.'';
-	            echo "Regular Price: ".get_post_meta($values['product_id'] , '_regular_price', true)."<br>";
-	            echo "Sale Price: ".get_post_meta($values['product_id'] , '_sale_price', true)."<br>";
+	            echo '<div class="menu-elements-cart" id="accordion"><h2 class="menu-accordian-line-cart">'.$_product->post_title.'</h2><div class="menu-content-cart collapsible">';
+							echo '<p>  <br>Price:'.$price.'';
+	            // echo "<br>Regular Price: ".get_post_meta($values['product_id'] , '_regular_price', true)."<br>";
+	            // echo "Sale Price: ".get_post_meta($values['product_id'] , '_sale_price', true)."<br>";
 							echo "</p>";
-							echo '<a href="'.wc()->cart->remove_cart_item($item).'" class="cart-remove">remove</a></div></div>';
+							echo '<a class="cart-remove">remove</a></div></div>';
 
 		        }
 
