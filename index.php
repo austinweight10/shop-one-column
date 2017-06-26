@@ -137,7 +137,7 @@
 					<img class="menu-Yawp-logo-inner">
 				</div>
 				<div class="menu-content">
-					<h1 class="menu-menu">menu</h1><span class="menu-closing menu-menu-close">close</span>
+					<h1 class="menu-menu">menu</h1><span class="menu-closing-main">close</span>
 					<div class="menu-elements" id="accordion">
 						<h2 class="menu-ember menu-accordian-line">Ember<span class="menu-ember-icon"></span></h2>
 						<div class="menu-content collapsible">
