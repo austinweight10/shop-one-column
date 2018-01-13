@@ -135,6 +135,18 @@
 			<nav class="menu menu-open menu-close col-xs-9 col-md-4" role="navigation">
 				<div class="menu-logo-inner">
 					<img class="menu-Yawp-logo-inner">
+					<svg xmlns="http://www.w3.org/2000/svg" width="1070" height="1298" viewBox="0 0 1070 1298">
+					  <path id="p1"
+    d="M0,0H1057S522.391,341.013,345,570s-153.348,722.84-153,723-192,0-192,0V0Z"
+    style="fill: #edf2f5;fill-rule: evenodd; transform: scale(0.16);" />
+						<animate xlink:href="#p1"
+					    attributeName="d"
+					    attributeType="XML"
+					    from="M0,0H1057S522.391,341.013,345,570s-153.348,722.84-153,723-192,0-192,0V0Z"
+					        to="M0,0H1057S522.391,341.013,345,570s-153.348,722.84-153,723-192,0-192,0V0Z"
+					    dur="10s"
+					    fill="freeze" />
+					</svg>
 				</div>
 				<div class="menu-content">
 					<h1 class="menu-menu">menu</h1><span class="menu-closing-main">close</span>
@@ -159,13 +171,11 @@
 					<div class="menu-info" id="accordion2">
 						<h2 class="menu-contact">Contact</h2>
 						<div class="menu-content">
-							<ul>
-								<li>Please subscribe to our newsletter below:<?php
-								if( function_exists( 'mc4wp_show_form' ) ) {
-								    mc4wp_show_form();
-								} ?></li>
-								<li>Or contact us on: <a href="mailto:hello@yawp.co.uk">hello@yawp.co.uk</a></li>
-							</ul>
+							<p>Please subscribe to our newsletter below:<p><?php
+							if( function_exists( 'mc4wp_show_form' ) ) {
+							    mc4wp_show_form();
+							} ?>
+							<p>Or contact us on: <a href="mailto:hello@yawp.co.uk">hello@yawp.co.uk</a><p>
 						</div>
 						<h2 class="menu-about">About</h2>
 						<div class="menu-content">
